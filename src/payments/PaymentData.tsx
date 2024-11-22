@@ -1,8 +1,9 @@
-type Payment = {
+export type Payment = {
   id: string;
   amount: number;
   status: 'pending' | 'processing' | 'success' | 'failed';
   email: string;
+  s_n?: number;
 };
 
 export const payments: Payment[] = [
@@ -490,3 +491,7 @@ export const payments: Payment[] = [
     email: 'user50@example.com',
   },
 ];
+
+payments.forEach((payment, index) => {
+  payment.s_n = index + 1;
+});
