@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/table';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button.tsx';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -27,8 +28,8 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [pagination, setPagination] = useState({
-    pageIndex: 2,
-    pageSize: 25,
+    pageIndex: 0,
+    pageSize: 5,
   });
 
   const table = useReactTable({
@@ -52,6 +53,17 @@ export function DataTable<TData, TValue>({
     setPagination((prevState) => ({
       ...prevState,
       pageIndex: prevState.pageIndex + 1,
+    }));
+  };
+
+  const goFirstPage = () => {
+    goToPage(0);
+  };
+
+  const goToPage = (page: number) => {
+    setPagination((prevState) => ({
+      ...prevState,
+      pageIndex: page,
     }));
   };
 
@@ -117,15 +129,42 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
+          <ArrowLeft />
           Previous
         </Button>
-        <div className="page-indicator flex items-center space-x-2 py-4">
-          <p>Page {pagination.pageIndex + 1}</p>
-          <p>of</p>
-          <p>
-            {table.getPageCount()} - Total {table.getRowCount()}
-          </p>
-        </div>
+        {/*<div className="page-indicator flex items-center space-x-2 py-4">*/}
+        {/*  <p>Page {pagination.pageIndex + 1}</p>*/}
+        {/*  <p>of</p>*/}
+        {/*  <p>*/}
+        {/*    {table.getPageCount()} - Total {table.getRowCount()}*/}
+        {/*  </p>*/}
+        {/*</div>*/}
+        <Button
+          variant="default"
+          size="sm"
+          className="rounded-lg p-4"
+          onClick={() => goFirstPage()}
+        >
+          1
+        </Button>
+        <Button variant="ghost" size="sm" className="rounded-lg p-4">
+          2
+        </Button>
+        <Button variant="ghost" size="sm" className="rounded-lg p-4">
+          3
+        </Button>
+        ...
+        <Button variant="ghost" size="sm" className="rounded-lg p-4">
+          4
+        </Button>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="rounded-lg p-4"
+          onClick={() => goToPage(table.getPageCount() - 1)}
+        >
+          {table.getPageCount()}
+        </Button>
         <Button
           variant="outline"
           size="sm"
@@ -136,6 +175,7 @@ export function DataTable<TData, TValue>({
           disabled={!table.getCanNextPage()}
         >
           Next
+          <ArrowRight />
         </Button>
       </div>
     </div>
