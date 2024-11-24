@@ -12,7 +12,7 @@ export const payments: Payment[] = [
     id: '489e1d42',
     amount: 125,
     status: 'processing',
-    email: 'example@gmail.com',
+    email: 'example@gmail.comexample@gmail.com',
   },
   {
     id: 'b3f7a2c1',

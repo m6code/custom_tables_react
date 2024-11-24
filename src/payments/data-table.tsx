@@ -71,7 +71,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="rounded-md border">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-[#EAEAEA]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -89,7 +89,7 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="[&_tr:nth-child(even)]:bg-[#EAEAEA80]">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
@@ -132,13 +132,6 @@ export function DataTable<TData, TValue>({
           <ArrowLeft />
           Previous
         </Button>
-        {/*<div className="page-indicator flex items-center space-x-2 py-4">*/}
-        {/*  <p>Page {pagination.pageIndex + 1}</p>*/}
-        {/*  <p>of</p>*/}
-        {/*  <p>*/}
-        {/*    {table.getPageCount()} - Total {table.getRowCount()}*/}
-        {/*  </p>*/}
-        {/*</div>*/}
         <Button
           variant={pagination.pageIndex === 0 ? 'default' : 'ghost'}
           size="sm"

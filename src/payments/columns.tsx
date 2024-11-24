@@ -15,9 +15,9 @@ import { Payment } from '@/payments/PaymentData.tsx';
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: 's_n',
-    header: () => <div className="text-right">S/N</div>,
+    header: () => <div className="text-left">S/N</div>,
     cell: ({ row }) => {
-      return <div className="p-0 text-right">{row.getValue('s_n')}</div>;
+      return <div className="p-0 text-left">{row.getValue('s_n')}</div>;
     },
   },
   {
