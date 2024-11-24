@@ -155,10 +155,20 @@ export function DataTable<TData, TValue>({
         >
           2
         </Button>
-        <Button variant="ghost" size="sm" className="rounded-lg p-4">
-          3
-        </Button>
-        ...
+        {}
+        <div
+          className={
+            pagination.pageIndex < 2 ||
+            pagination.pageIndex > table.getPageCount() - 3
+              ? 'hidden'
+              : 'visible'
+          }
+        >
+          <Button variant="default" size="sm" className="rounded-lg p-4">
+            {pagination.pageIndex + 1}
+          </Button>
+        </div>
+        <span>...</span>
         <Button
           variant={
             pagination.pageIndex === table.getPageCount() - 2
