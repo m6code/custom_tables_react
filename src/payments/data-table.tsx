@@ -147,18 +147,29 @@ export function DataTable<TData, TValue>({
         >
           1
         </Button>
-        <Button variant="ghost" size="sm" className="rounded-lg p-4">
+        <Button
+          variant={pagination.pageIndex === 1 ? 'default' : 'ghost'}
+          size="sm"
+          className="rounded-lg p-4"
+          onClick={() => goToPage(1)}
+        >
           2
         </Button>
         <Button variant="ghost" size="sm" className="rounded-lg p-4">
           3
         </Button>
         ...
-        <Button variant="ghost" size="sm" className="rounded-lg p-4">
-          4
-        </Button>
-        <Button variant="ghost" size="sm" className="rounded-lg p-4">
-          5
+        <Button
+          variant={
+            pagination.pageIndex === table.getPageCount() - 2
+              ? 'default'
+              : 'ghost'
+          }
+          size="sm"
+          className="rounded-lg p-4"
+          onClick={() => goToPage(table.getPageCount() - 2)}
+        >
+          {table.getPageCount() - 1}
         </Button>
         <Button
           variant={
