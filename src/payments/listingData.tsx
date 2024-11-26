@@ -5,16 +5,16 @@ export type ListingsResponse = {
 
 export type ListingsResponseDatum = {
   id: string;
-  type: FluffyType;
-  attributes: PurpleAttributes;
+  type: ListingType;
+  attributes: ListingsResponseAttributes;
 };
 
-export type PurpleAttributes = {
+export type ListingsResponseAttributes = {
   amenities: Amenities;
   available_date: string;
   description: null;
   price: Price;
-  status: FluffyStatus;
+  status: ListingStatus;
   price_in_currency: number;
   property_unit: PropertyUnit;
   images: Images;
@@ -28,15 +28,15 @@ export type Images = {
 
 export type ImagesDatum = {
   id: string;
-  type: PurpleType;
-  attributes: FluffyAttributes;
+  type: ListingImageType;
+  attributes: ListingImageAttributes;
 };
 
-export type FluffyAttributes = {
+export type ListingImageAttributes = {
   url: string;
 };
 
-export type PurpleType = 'listing_image';
+export type ListingImageType = 'listing_image';
 
 export type Price = {
   cents: number;
@@ -46,21 +46,21 @@ export type Price = {
 export type CurrencyISO = 'CAD';
 
 export type PropertyUnit = {
-  data: Data;
+  data: PropertyUnitData;
 };
 
-export type Data = {
+export type PropertyUnitData = {
   id: string;
-  type: DataType;
-  attributes: DataAttributes;
+  type: PropertyUnitDataType;
+  attributes: PropertyUnitDataAttributes;
 };
 
-export type DataAttributes = {
+export type PropertyUnitDataAttributes = {
   document_urls: Amenities;
   external_landlord_prly_id: null;
   name: string;
   size: null;
-  status: PurpleStatus;
+  status: PropertyUnitStatus;
   unit_number: null;
   unit_identifier: string;
   open_listing_id: string;
@@ -81,13 +81,13 @@ export type Country = 'Canada';
 
 export type Territory = 'fake-territory';
 
-export type PurpleStatus = 'active';
+export type PropertyUnitStatus = 'active';
 
-export type DataType = 'property_unit';
+export type PropertyUnitDataType = 'property_unit';
 
-export type FluffyStatus = 'open';
+export type ListingStatus = 'open';
 
-export type FluffyType = 'listing';
+export type ListingType = 'listing';
 
 export type Meta = {
   current_page: number;
